@@ -22,11 +22,7 @@ app.use(clerkMiddleware());
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
-app.post(
-  "/api/clerk",
-  bodyParser.raw({ type: "application/json" }),
-  clerkWebhooks
-);
+app.use("/api/clerk", clerkWebhooks);
 
 app.use("/api/user", userRouter);
 app.use("/api/hotels", hotelRouter);
